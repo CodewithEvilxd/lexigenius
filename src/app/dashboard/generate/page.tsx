@@ -356,9 +356,12 @@ export default function GeneratePage() {
           </div>
           {/* User Icon */}
           <div className="shrink-0 w-8 h-8 rounded-full bg-blue-500 text-white flex items-center justify-center text-xs font-bold overflow-hidden">
-            <img
+                        <Image
               src={currentUser?.photoURL || "/default-avatar.png"}
               alt="Profile"
+              width={32}
+              height={32}
+              className="rounded-full"
             />
           </div>
         </div>

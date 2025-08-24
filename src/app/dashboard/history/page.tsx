@@ -78,7 +78,7 @@ export default function History() {
             {/* User Icon */}
             <div className="shrink-0 w-8 h-8 rounded-full bg-blue-500 text-white flex items-center justify-center text-xs font-bold overflow-hidden">
               {currentUser?.photoURL ? (
-                <img src={currentUser.photoURL} alt="User profile" className="w-full h-full object-cover" />
+                                <Image src={currentUser.photoURL} alt="User profile" width={32} height={32} className="w-full h-full object-cover" />
               ) : (
                 <span className="font-bold">
                   {currentUser?.displayName?.charAt(0).toUpperCase()}
