@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import { handleCopy } from "@/lib/copyClipboard";
 import { clearAllHistory, deleteHistoryItem } from "@/lib/fireStoreHelpers";
 import { useAuth } from "@/lib/useAuth";
@@ -91,7 +92,7 @@ export default function History() {
             {/* AI Icon */}
 
             <div className="shrink-0 w-8 h-8 rounded-full bg-gray-400 text-white hidden md:flex  items-center justify-center text-xs font-bold dark:bg-gray-700 overflow-hidden">
-              <img src="/meta.webp" alt="" />
+                            <Image src="/meta.webp" alt="" width={32} height={32} />
             </div>
 
             {/* AI Bubble */}

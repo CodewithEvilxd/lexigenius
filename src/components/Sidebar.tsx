@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { Dispatch, SetStateAction, useState } from "react";
@@ -55,12 +56,12 @@ export default function Sidebar({
         className={` flex items-center justify-center gap-1 p-1 top-1 rounded-md   absolute left-2 transition-all duration-300`}
       >
         {currentUser?.photoURL ? (
-          <img
+                    <Image
             src={currentUser.photoURL}
             alt="User profile"
-            className={`rounded-full ${
-              isOpen ? "w-12" : "w-8"
-            } transition-all duration-300 cursor-pointer`}
+            width={isOpen ? 48 : 32}
+            height={isOpen ? 48 : 32}
+            className="rounded-full transition-all duration-300 cursor-pointer"
           />
         ) : (
           <div

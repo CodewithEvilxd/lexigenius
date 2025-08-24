@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { generateText } from "@/lib/generate";
 import { useEffect, useRef, useState } from "react";
 import { useAuth } from "@/lib/useAuth";
@@ -368,7 +369,7 @@ export default function GeneratePage() {
         <div className="mt-4 flex justify-start items-start gap-2">
           {/* AI Icon */}
           <div className="shrink-0 w-8 hidden  h-8 rounded-full bg-gray-400 text-white md:flex items-center justify-center text-xs font-bold dark:bg-gray-600 overflow-hidden">
-            <img src="/meta.webp" alt="" />
+                        <Image src="/meta.webp" alt="" width={32} height={32} />
           </div>
 
           {/* AI Message Bubble */}

@@ -7,8 +7,8 @@ import { useRouter } from "next/navigation";
 import { ReactNode, useEffect, useState } from "react";
 
 export default function DashboardLayout({ children }: { children: ReactNode }) {
-    const [isOpen, setIsOpen] = useState(false);
-       const user = useAuth(); // returns: undefined (loading), null (logged out), User
+  const [isOpen, setIsOpen] = useState(false);
+  const user = useAuth(); // returns: undefined (loading), null (logged out), User
   const router = useRouter();
 
   useEffect(() => {
@@ -17,7 +17,7 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
     }
   }, [user, router]);
 
-  // 🧠 Optional loading state
+  // Optional loading state
   if (user === undefined) {
     return (
       <div className="w-full h-screen flex items-center justify-center">
@@ -30,12 +30,23 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
     return null; // prevent flicker while redirecting
   }
 
+  const handleOpenBackgroundSelector = () => {
+    console.log("Background selector opened!");
+    // TODO: Add modal logic here
+  };
+
   return (
-    <div className="flex  min-h-[100vh] overflow-x-hidden  bg-[#ffffffb0] dark:bg-[#0101019e]">
-        <Header />
-      <div className="flex mt-16 justify-between w-full ">
-      <Sidebar isOpen={isOpen} setIsOpen={setIsOpen}/>
-        <main className={` h-auto flex  sm:pr-0  items-start  sm:justify-center  w-full ${isOpen ? 'md:ml-52 lg:ml-56' : 'ml-0'} transition-all duration-200`}>{children}</main>
+    <div className="flex min-h-[100vh] overflow-x-hidden bg-[#ffffffb0] dark:bg-[#0101019e]">
+      <Header onOpenBackgroundSelector={handleOpenBackgroundSelector} />
+      <div className="flex mt-16 justify-between w-full">
+        <Sidebar isOpen={isOpen} setIsOpen={setIsOpen} />
+        <main
+          className={`h-auto flex sm:pr-0 items-start sm:justify-center w-full ${
+            isOpen ? 'md:ml-52 lg:ml-56' : 'ml-0'
+          } transition-all duration-200`}
+        >
+          {children}
+        </main>
       </div>
     </div>
   );

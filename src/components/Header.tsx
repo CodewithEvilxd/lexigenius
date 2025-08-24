@@ -83,13 +83,15 @@ const Header = ({ onOpenBackgroundSelector }: HeaderProps) => {
 
         <ThemeToggle />
 
-        <button
-          onClick={onOpenBackgroundSelector}
-          title="Change Background"
-          className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors"
-        >
-          <Palette className="w-5 h-5 text-gray-600 dark:text-gray-300" />
-        </button>
+        {onOpenBackgroundSelector && (
+          <button
+            onClick={onOpenBackgroundSelector}
+            title="Change Background"
+            className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors"
+          >
+            <Palette className="w-5 h-5 text-gray-600 dark:text-gray-300" />
+          </button>
+        )}
       </div>
     </motion.header>
   );
