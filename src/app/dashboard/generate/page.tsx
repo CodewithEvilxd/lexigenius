@@ -12,7 +12,6 @@ import rehypeRaw from "rehype-raw";
 
 import { templates } from "@/lib/templates";
 
-import SeoSuggestions from "@/components/SeoSuggestions";
 import ReadabilityScore from "@/components/ReadabilityScore";
 import rs from "text-readability";
 
@@ -80,12 +79,9 @@ export default function GeneratePage() {
   const [keywords, setKeywords] = useState("");
   const [isImproving, setIsImproving] = useState(false);
   const [showImproveWarning, setShowImproveWarning] = useState(false);
-  const [language, setLanguage] = useState(languages[0]);
-  const [template, setTemplate] = useState(templates[0].name);
+  const [language] = useState(languages[0]);
   const [mode, setMode] = useState("generate");
-  const [seoSuggestions, setSeoSuggestions] = useState<string[]>([]);
   const [readabilityScore, setReadabilityScore] = useState<number | null>(null);
-  const [isDriveAuthenticated, setIsDriveAuthenticated] = useState(false);
 
   const currentUser = useAuth();
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -107,41 +103,6 @@ export default function GeneratePage() {
     a.click();
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
-  };
-
-  const handleDriveAuth = async () => {
-    try {
-      const response = await fetch("/api/drive", { method: "POST" });
-      const data = await response.json();
-      if (data.authUrl) {
-        window.open(data.authUrl, "_blank");
-      }
-    } catch (error) {
-      console.error("Error during Google Drive authentication", error);
-      setError("Failed to authenticate with Google Drive.");
-    }
-  };
-
-  const handleSaveToDrive = async () => {
-    try {
-      const response = await fetch("/api/drive", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          content: output,
-          fileName: `${type.toLowerCase().replace(/ /g, "-")}-generated-by-lexigenius.txt`,
-        }),
-      });
-
-      if (!response.ok) {
-        throw new Error("Failed to save to Google Drive");
-      }
-
-      alert("File saved to Google Drive successfully!");
-    } catch (error) {
-      console.error("Error saving to Google Drive", error);
-      setError("Failed to save to Google Drive.");
-    }
   };
 
   useEffect(() => {

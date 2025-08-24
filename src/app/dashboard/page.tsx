@@ -15,7 +15,7 @@ const DashboardPage = () => {
   ]);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const onLayoutChange = (newLayout: any) => {
+  const onLayoutChange = (newLayout: Layout[]) => {
     setLayout(newLayout);
   };
 

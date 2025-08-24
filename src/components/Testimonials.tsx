@@ -33,7 +33,7 @@ const Testimonials = () => {
             transition={{ delay: index * 0.2, duration: 0.5 }}
             className="p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg"
           >
-            <p className="text-lg italic mb-4">"{testimonial.quote}"</p>
+            <p className="text-lg italic mb-4">&ldquo;{testimonial.quote}&rdquo;</p>
             <p className="font-bold text-right">- {testimonial.name}</p>
             <p className="text-sm text-gray-500 dark:text-gray-400 text-right">{testimonial.title}</p>
           </motion.div>

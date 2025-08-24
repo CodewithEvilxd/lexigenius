@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-import { backgrounds, Background } from '../lib/backgrounds';
+import { backgrounds } from '../lib/backgrounds';
 
 type Props = {
   isOpen: boolean;

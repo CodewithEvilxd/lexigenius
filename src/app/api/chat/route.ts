@@ -5,7 +5,7 @@ import { ChatCompletionMessageParam } from "openai/resources/index.mjs";
 export async function POST(req: Request) {
   const { prompt, messages } = await req.json();
 
-  const history = messages.slice(-10).map((message: any) => ({
+  const history = messages.slice(-10).map((message: { isUser: boolean; text: string }) => ({
     role: message.isUser ? "user" : "assistant",
     content: message.text,
   }));

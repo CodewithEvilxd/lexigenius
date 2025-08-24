@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/components/ThemeProvider";
 import MainLayout from "@/components/MainLayout";
 
 export const metadata: Metadata = {
+  manifest: "/manifest.json",
   title: "LexiGenius",
   description: "Your intelligent writing partner for clear, professional, and impactful content.",
   keywords: [
