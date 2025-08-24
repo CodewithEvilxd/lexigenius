@@ -79,7 +79,7 @@ LexiGenius is a comprehensive AI-powered writing assistant designed to streamlin
 ## 📂 Project Structure
 
 ```
-writewiseAI-main/
+lexigeniusAI-main/
 ├── public/                 # Public assets (images, icons, manifest.json)
 ├── src/
 │   ├── app/                # Next.js App Router
