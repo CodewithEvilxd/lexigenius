@@ -10,10 +10,7 @@ import { handleCopy } from "@/lib/copyClipboard";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
 
-import { templates } from "@/lib/templates";
 
-import ReadabilityScore from "@/components/ReadabilityScore";
-import rs from "text-readability";
 
 const contentTypes = [
   "Email",
@@ -81,7 +78,6 @@ export default function GeneratePage() {
   const [showImproveWarning, setShowImproveWarning] = useState(false);
   const [language] = useState(languages[0]);
   const [mode, setMode] = useState("generate");
-  const [readabilityScore, setReadabilityScore] = useState<number | null>(null);
 
   const currentUser = useAuth();
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -104,26 +100,6 @@ export default function GeneratePage() {
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
   };
-
-  useEffect(() => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const code = urlParams.get('code');
-
-    if (code) {
-      fetch("/api/drive", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ code }),
-      })
-        .then(response => response.json())
-        .then(data => {
-          if (data.success) {
-            setIsDriveAuthenticated(true);
-            window.history.replaceState({}, document.title, "/dashboard/generate");
-          }
-        });
-    }
-  }, []);
 
   const didMount = useRef(false);
 
@@ -203,20 +179,6 @@ export default function GeneratePage() {
       setType(originalContentType);
     }
   };
-
-  useEffect(() => {
-    if (output) {
-      try {
-        const score = rs.textStandard(output);
-        setReadabilityScore(score);
-      } catch (e) {
-        console.error("Error calculating readability score:", e);
-        setReadabilityScore(null);
-      }
-    } else {
-      setReadabilityScore(null);
-    }
-  }, [output]);
 
   return (
     <div className="w-[100vw] ml-[4.2em] pr-2  md:w-[70vw] rounded-xl  md:ml-0 md:mr-0  md:px-3 py-5 mt-2 ">
@@ -444,9 +406,7 @@ export default function GeneratePage() {
               {loading && <span className="animate-pulse">▍</span>}
             </div>
 
-            {readabilityScore !== null && (
-              <ReadabilityScore score={readabilityScore} />
-            )}
+            
 
             {/* Export Button */}
             {output && !loading && (

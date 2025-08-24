@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/favicon.ico", // Path relative to the public folder
+        url: "/image.png", // Path relative to the public folder
         width: 800,
         height: 600,
         alt: "LexiGenius Logo",
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     title: "LexiGenius",
     description: "Supercharge your writing with AI – clear, professional, and fast.",
     creator: "@your-twitter-handle",
-    images: ["/favicon.ico"], // Just the relative path works here
+    images: ["/image.png"], // Just the relative path works here
   },
 };
 

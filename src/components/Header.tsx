@@ -52,7 +52,7 @@ const Header = ({ onOpenBackgroundSelector }: HeaderProps) => {
     }`}
     >
       <div className="flex items-center">
-        <GradientText
+                <GradientText
           colors={["#ff4d4d", "#ffa500", "#ffff66", "#ffa500", "#ff4d4d"]}
           animationSpeed={12}
           showBorder={false}
