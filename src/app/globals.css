@@ -1,0 +1,88 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Light Mode */
+input:-webkit-autofill {
+  background-color: transparent !important;
+  -webkit-box-shadow: 0 0 0px 1000px #ffffff inset !important; /* light bg */
+  -webkit-text-fill-color: #828282 !important; /* light text */
+  transition: background-color 9999s ease-in-out 0s;
+}
+
+/* Dark Mode */
+.dark input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px #18181b inset !important;
+  -webkit-text-fill-color: #b1b1b1 !important;
+}
+
+@keyframes scaleToNormal {
+  0% {
+    transform: scale(2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.scale-then-normal {
+  animation: scaleToNormal 0.6s ease-in-out 2.8s forwards;
+  transform: scale(2); /* Initial scale */
+}
+
+.glow-button {
+  background: linear-gradient(90deg, #ff0000, #ffbf00, #d40606);
+  background-size: 300% 300%;
+  animation: gradientShift 6s ease infinite;
+  box-shadow: 0 0 7px rgba(131, 38, 38, 0.8), 0 0 10px rgba(246, 197, 92, 0.6);
+  transition: all 0.3s ease;
+}
+
+.glow-button:active {
+  transform: skew(50deg) scale(1.1);
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes floatUpDown {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-60px) scale(1.1); /* increased movement */
+  }
+}
+
+@keyframes floatLeftRight {
+  0%,
+  100% {
+    transform: translateX(0) scale(1);
+  }
+  50% {
+    transform: translateX(60px) scale(1.6); /* increased movement */
+  }
+}
+
+.animate-float-up {
+  animation: floatUpDown 8s ease-in-out infinite;
+}
+
+.animate-float-left {
+  animation: floatLeftRight 10s ease-in-out infinite;
+}
+
+.bg-circle {
+  @apply fixed rounded-full opacity-30 blur-3xl z-[-1];
+}
+
